@@ -1,0 +1,30 @@
+                        #PYTHON CODE 
+def exor(arr,query):
+
+    result=[]  #empty list to return the resulting output array 
+    
+    for i in range(0,len(query),2):  #iterating throughtout the query array with step size as 2 
+
+  
+        l=[] #empty list
+        res=0 
+
+        for j in range(int(query[i]),int(query[i+1])+1): #traversing input array from left(query[i]) to right(query[i+1]) 
+            res=res^arr[j]  #Performing xor operation on each iterated element
+
+        result.append(res) #storing the obtained result as list 
+
+    return result
+
+arr=list(map(int,input().split(','))) #input elements in an integer array(in python list) 
+query=input().split(',') #take queries from user 
+result=exor(arr,query) #passing input array and query in to exor func
+print(result) #print the array(list)
+    
+    
+
+        
+    
+
+    
+ 
