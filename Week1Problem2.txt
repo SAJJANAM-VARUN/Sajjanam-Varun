@@ -1,0 +1,28 @@
+def flips(a,b,c):
+    a_Bin=bin(a)[2:]# Binary  conversion of a digit
+    b_Bin=bin(b)[2:]
+    c_Bin=bin(c)[2:]
+    max_Bin=max(len(a_Bin),len(b_Bin),len(c_Bin))
+    a_Bin='0'*(max_Bin-len(a_Bin))+a_Bin #appending 0's at the start so as to balance all lengths of bin num
+    b_Bin='0'*(max_Bin-len(b_Bin))+b_Bin
+    c_Bin='0'*(max_Bin-len(c_Bin))+c_Bin
+    count=0
+    for i in range(max_Bin):
+        if c_Bin[i]=='0': # To get bit 0 in 'OR' operation both bits need to be zero
+            if a_Bin[i] =='1' and b_Bin[i]=='1': # Flip both 1's in a,b to get zeros
+                count=count+2
+            elif a_Bin[i]=='1' or b_Bin[i]=='1': # Flip only one 1 in a,b to get zero
+                count=count+1
+        else:   # To get bit 1 in 'OR' either of bit can be 1 
+            if a_Bin[i] =='0' and b_Bin[i]=='0': #flip both 0's to get 1 bit
+                count=count+1
+    return count
+
+    
+
+    
+a=int(input())
+b=int(input())
+c=int(input())
+
+print(flips(a,b,c))
